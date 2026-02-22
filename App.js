@@ -1,15 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, Image, SectionList, Alert} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, SectionList, Alert, ScrollView} from 'react-native';
 
 const DATA = [
   {
     title: 'HOBI',
-    data: ['Coding', 'Listening Music', 'Gaming'],
+    data: ['1. Coding', '2. Listening Music', '3. Gaming'],
   },
 ];
 export default function App() {
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
 
     <Image source={require('./goji.jpeg')} style={styles.Image}/>
       <Text style={{ fontWeight: 'bold', fontSize: 20, textAlign: 'center'}}>Usamah Ghozi Robbani</Text>
@@ -21,6 +21,8 @@ export default function App() {
       <Text style={styles.isi}>2410501048</Text>
       <Text style={styles.Ket}>PRODI</Text>
       <Text style={styles.isi}>D3 Sistem Informasi</Text>
+      <Text style={styles.Ket}>ANGKATAN</Text>
+      <Text style={styles.isi}>2024</Text>
 
       <SectionList
         sections={DATA}
@@ -29,7 +31,13 @@ export default function App() {
         renderSectionHeader={({ section: { title } }) => (
           <Text style={styles.Ket}>{title}</Text>
         )}
+        scrollEnabled={false}
       />
+
+      <Text style={[styles.Ket, { marginTop: 15 }]}>DESKRIPSI</Text>
+      <Text style={styles.isi}>
+        Saya Adalah Mahasiswa D3 Sistem Informasi di UPN "Veteran" Jakarta. Saya minat di bidang pemrograman terutama pada bidang Back-End. Selain itu di kampus saya juga aktif dalam beberapa organisasi kampus. Saya juga aktif di organisasi luar kampus.
+      </Text>
     </View>
 
         <TouchableOpacity style={{ backgroundColor: 'blue', padding: 10, borderRadius: 5, marginTop: 20 } } onPress={() => Alert.alert("Kata Kata Hari Ini", "Semangat Terus Ya !!!")}>
@@ -37,16 +45,17 @@ export default function App() {
       </TouchableOpacity>
 
       <StatusBar style="auto" />
-    </View>
+    </ScrollView>
   );
+
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: '#eaeaeaa5',
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingVertical: 50,
   },
   Ket: {
     color: 'gray',
